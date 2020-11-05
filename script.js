@@ -12,25 +12,13 @@ var ViewModel = function(first, last) {
     this.firstName = ko.observable(first);
     this.lastName = ko.observable(last).extend({logChange: "last name has changed"});;
  
-    this.firstName.extend({
-        required:  {
-            message: "Required",
-            onlyIf: function(){
-                return ko.unwrap(this.firstName) == "";
-            }
-        }        
-    });
-
     this.fullName = ko.pureComputed(function() {
         // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
         return this.firstName() + " " + this.lastName();
     }, this);
-
-
 };
  
 ko.applyBindings(new ViewModel("Planet", "Earth")); // This makes Knockout get to work
-
 
 
 //https://www.npmjs.com/package/knockout-validations-extender
