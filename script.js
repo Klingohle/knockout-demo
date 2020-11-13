@@ -22,7 +22,35 @@ function MainViewModel() {
         console.log("Current SelectedNavItem", self.selectedNavItem());
     };
 
-    // Array mit Fahrzeugtypen
+}
+
+function OverviewViewModel() {
+    let self = this;
+    self.ausleihen = ["Auto 1", "Auto 2"];
+
+    //Aufgabe 1: Anstelle der Strings sollten hier Objekte rein (Rental?) rein, welches mehr Eigenschaften hat (z.B. Wann ausgeliehen wurde, wer usw.)
+    //Tabelle schön machen und alle Eigenschaften anzeigen
+
+}
+
+
+function RentalViewModel() {
+
+}
+
+//Weitere ViewModels für die restlichen zwei Navigation Items erstellen
+//Eventuell dieses auch mit Tabellen ausstatten...  
+
+
+ko.applyBindings(new MainViewModel());
+
+
+
+
+/*
+ 
+
+// Array mit Fahrzeugtypen
     /*Fahrzeugtyp-Objekt enthält jeweils: Typ als key und als value ein Array 
     mit Marke, Personenzahl, Anzahl verfügbarer Wagen, Verbrauch, Kosten/Stunde€ */
     var cars = ko.observableArray([
@@ -41,33 +69,8 @@ function MainViewModel() {
     
     //Eintrag löschen
 
-}
-
-function OverviewViewModel() {
-    let self = this;
-    self.ausleihen = ["Auto 1", "Auto 2"];
-
-}
 
 
-function RentalViewModel() {
-
-}
-
-ko.applyBindings(new MainViewModel());
-
-
-
-
-
-
-
-
-
-
-
-/*
- 
 let x = new ViewModel("Planet", "Earth")
 
 ko.applyBindings(x); // This makes Knockout get to work
