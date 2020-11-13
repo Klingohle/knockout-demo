@@ -16,11 +16,38 @@ var ViewModel = function(first, last) {
         // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
         return this.firstName() + " " + this.lastName();
     }, this);
+
 };
+
+function MainViewModel() {
+    this.navItems = ["Übersicht", "Ausleihe", "Rückgabe", "Autoverwaltung"];
+    // Array mit Fahrzeugtypen
+    /*Fahrzeugtyp-Objekt enthält jeweils: Typ als key und als value ein Array 
+    mit Marke, Personenzahl, Anzahl verfügbarer Wagen, Verbrauch, Kosten/Stunde€ */
+    var cars = ko.observableArray([
+        {"Typ1": ["Mazda", 5, 10, 5.2, 8]}, 
+        {"Typ2": ["Volvo", 5, 10, 5.2, 8]}, 
+        {"Typ3": ["Opel", 5, 10, 5.2, 8]}
+    ]);
+
+    //
+    
+	//Eintrag erstellen
+    
+    
+    //Eintrag abspeichern
+    
+    
+    //Eintrag löschen
+
+}
+
+ko.applyBindings(new MainViewModel());
+/*
  
 let x = new ViewModel("Planet", "Earth")
 
 ko.applyBindings(x); // This makes Knockout get to work
-
+*/
 
 //https://www.npmjs.com/package/knockout-validations-extender
