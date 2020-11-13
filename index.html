@@ -12,8 +12,9 @@
     
 </head>
 <body class="d-flex flex-column h-100">
-    
-     <!-- Fixed navbar -->
+
+<!----------------------- Begin header content ---------------------->
+<header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">Fixed navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto" data-bind="foreach: navItems">
         <li class="nav-item active" >
-          <a data-bind="text: $data" class="nav-link" href="#"></a>
+          <a data-bind="text: $data, click: $parent.navItemClicked" class="nav-link" href="#"></a>
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
@@ -33,29 +34,54 @@
   </nav>
 </header>
 
-<!-- Begin page content -->
+
+<!----------------------- Begin page content ---------------------->
+
+
 <main role="main" class="flex-shrink-0">
   <div class="container">
-   
-    <p>First name: <input data-bind="value: firstName" /></p>
-    <p>Last name: <input data-bind="value: lastName" /></p>
     
-    <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>    
+    <div id="viewOverview" style="border: solid 1px black" data-bind="style: { display: selectedNavItem() == 'Übersicht' ? 'block' : 'none' }">
+      <div data-bind="with: overviewViewModel">
+        <h2>Overview</h2>
+        <table data-bind="foreach: ausleihen">
+          <tr>
+            <td data-bind="text: $data"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
+    <div id="viewRental" style="border: solid 1px black;" data-bind="style: { display: selectedNavItem() == 'Ausleihe' ? 'block' : 'none' }">
+      <h2>Rental</h2>
+    </div>
 
+    <div id="viewReturn" style="border: solid 1px black;" data-bind="style: { display: selectedNavItem() == 'Rückgabe' ? 'block' : 'none' }">
+      <h2>Return</h2>
+    </div>
+
+    <div id="viewCars" style="border: solid 1px black;" data-bind="style: { display: selectedNavItem() == 'Autoverwaltung' ? 'block' : 'none' }">
+      <h2>Cars</h2>
+    </div>
+    
   </div>
 </main>
 
+
+
+<!----------------------- Begin footer content ---------------------->
 <footer class="footer mt-auto py-3">
   <div class="container">
     <span class="text-muted">Place sticky footer content here.</span>
   </div>
 </footer>
+
+<pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
     
   
       
 
-    <!-- Has to be at the end -->
-    <script src="script.js"></script>
+<!-- Has to be at the end -->
+<script src="script.js"></script>
 </body>
 </html>

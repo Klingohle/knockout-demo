@@ -7,20 +7,21 @@ ko.extenders.logChange = function(target, text) {
 };
 
 // Here's my data model
-
-var ViewModel = function(first, last) {
-    this.firstName = ko.observable(first);
-    this.lastName = ko.observable(last).extend({logChange: "last name has changed"});;
- 
-    this.fullName = ko.pureComputed(function() {
-        // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
-        return this.firstName() + " " + this.lastName();
-    }, this);
-
-};
-
 function MainViewModel() {
-    this.navItems = ["Übersicht", "Ausleihe", "Rückgabe", "Autoverwaltung"];
+    let self = this;
+    
+    self.navItems = ["Übersicht", "Ausleihe", "Rückgabe", "Autoverwaltung"];
+    self.selectedNavItem = ko.observable("Übersicht"); //Standardwert beim Start des Programs
+
+    self.overviewViewModel = ko.observable(new OverviewViewModel());
+    self.rentalViewModel = ko.observable(new RentalViewModel());
+
+    /* Event when clicked on a navigation item */
+    self.navItemClicked = function (navItemName) {
+        self.selectedNavItem(navItemName);
+        console.log("Current SelectedNavItem", self.selectedNavItem());
+    };
+
     // Array mit Fahrzeugtypen
     /*Fahrzeugtyp-Objekt enthält jeweils: Typ als key und als value ein Array 
     mit Marke, Personenzahl, Anzahl verfügbarer Wagen, Verbrauch, Kosten/Stunde€ */
@@ -42,7 +43,29 @@ function MainViewModel() {
 
 }
 
+function OverviewViewModel() {
+    let self = this;
+    self.ausleihen = ["Auto 1", "Auto 2"];
+
+}
+
+
+function RentalViewModel() {
+
+}
+
 ko.applyBindings(new MainViewModel());
+
+
+
+
+
+
+
+
+
+
+
 /*
  
 let x = new ViewModel("Planet", "Earth")
@@ -51,3 +74,5 @@ ko.applyBindings(x); // This makes Knockout get to work
 */
 
 //https://www.npmjs.com/package/knockout-validations-extender
+
+
