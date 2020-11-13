@@ -22,9 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto" data-bind="foreach: navItems">
         <li class="nav-item active" >
-          <a data-bind="text: $data, 
-          css: { selected: $data == $root.chosenFolderId() },
-          click: $root.goToFolder" class="nav-link" href="#"></a>
+          <a data-bind="text: $data" class="nav-link" href="#"></a>
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
