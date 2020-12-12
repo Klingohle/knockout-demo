@@ -74,7 +74,6 @@ ko.applyBindings(new MainViewModel());
 let x = new ViewModel("Planet", "Earth")
 
 ko.applyBindings(x); // This makes Knockout get to work
-*/
 
 //https://www.npmjs.com/package/knockout-validations-extender
 
